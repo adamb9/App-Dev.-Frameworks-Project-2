@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{student.h1}">Student Details</h1>
+
+<table class="centre-screen">
+    <tr>
+        <th th:text="#{allstudents.id}">ID</th>
+        <th th:text="#{allstudents.email}">Email</th>
+        <th th:text="#{allstudents.firstname}">First Name</th>
+        <th th:text="#{allstudents.surname}">Surname</th>
+    </tr>
+    <tr th:object="${student}">
+        <td th:text="*{studentId}"></td>
+        <td th:text="*{studentEmail}"></td>
+        <td th:text="*{studentFname}"></td>
+        <td th:text="*{studentSurname}"></td>
+    </tr>
+</table>
+
+
+<h1 th:text="#{note.h1}">Associated Notes</h1>
+<table class="centre-screen">
+    <tr>
+        <th th:text="#{note.id}">ID</th>
+        <th th:text="#{note.creationdate}">Creation Date</th>
+        <th th:text="#{note.text}">Text</th>
+    </tr>
+    <tr th:each="note: ${notes}" th:object="${note}">
+        <td th:text="*{noteId}"></td>
+        <td th:text="*{noteCreationDate}"></td>
+        <td th:text="*{noteText}"></td>
+    </tr>
+</table>
+
+<footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

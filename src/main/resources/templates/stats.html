@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{stats.h1}">View Statistics</h1>
+
+<h2 th:text="#{stats.nostudents}">Number of students: </h2>
+<h2 th:text="${noStudents}"></h2>
+
+<h2 th:text="#{stats.avgnotes}">Average Notes Per Student: </h2>
+<h2 th:text="${avgNotes}"></h2>
+
+<footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

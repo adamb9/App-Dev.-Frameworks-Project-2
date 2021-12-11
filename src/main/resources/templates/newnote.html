@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Note</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{addnote.h1}">Add Note</h1>
+
+<div>
+    <form method="post" th:action="@{/newnote}" th:object="${newNoteForm}">
+
+        <label for="noteText" th:text="#{addnote.notetext}"></label>
+            <input type="text" th:field="*{noteText}" id="noteText"/>
+                <span th:if="${#fields.hasErrors('noteText')}" class="error" th:errors="*{noteText}"></span>
+        <br>
+        <label for="student" th:text="#{addnote.student}"></label>
+            <select th:field="*{studentId}" id="student">
+                <option th:each="student: ${studentList}" th:text="${student.studentId}" th:value="${student.studentId}"/>
+            </select>
+
+        <br><input type="submit" th:value="#{submit} "/>
+    </form>
+</div>
+
+<footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

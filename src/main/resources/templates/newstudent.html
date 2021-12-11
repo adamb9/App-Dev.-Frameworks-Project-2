@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+    <header th:insert="fragments.html :: heading"></header>
+    <h1 th:text="#{addstudent.h1}">Add Student</h1>
+    <div>
+        <form method="post" th:action="@{/newstudent}" th:object="${newStudentForm}">
+            <label for="email" th:text="#{addstudent.email}"></label>
+                <input type="text" th:field="*{email}" id="email"/>
+                    <span th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}"></span>
+                    <span th:if="${duplicateStudentEmail}" class="error" th:text="#{addstudent.alreadyexists}"></span>
+            <br><label for="firstName" th:text="#{addstudent.firstname}"></label>
+                <input type="text" th:field="*{firstName}" id="firstName"/>
+                     <span th:if="${#fields.hasErrors('firstName')}" class="error" th:errors="*{firstName}"></span>
+            <br><label for="lastName" th:text="#{addstudent.lastname}"></label>
+                <input type="text" th:field="*{lastName}" id="lastName"/>
+                     <span th:if="${#fields.hasErrors('lastName')}" class="error" th:errors="*{lastName}"></span>
+            <br><input type="submit"  th:value="#{submit} "/>
+        </form>
+    </div>
+
+    <footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+* {
+    font-family: Arial, sans-serif;
+}
+h1, h2, p {
+    color: dimgray;
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+    text-align: center;
+}
+td, th {
+    padding: 0.5em;
+}
+th {
+    background-color: #95A5A6;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+tr {
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0,0,0,0.1);
+}
+input[type=text], select {
+    text-align: center;
+    display: block;
+    padding:10px;
+    margin:auto;
+}
+
+div.form {
+    display: block;
+    text-align: center;
+}
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+body {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+footer {
+    text-align: center;
+    padding-top: 20px;
+}

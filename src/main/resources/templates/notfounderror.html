@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Not Found</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{error.h1}">Error</h1>
+<h2 th:if="${studentId}">The student with id <span th:text="${studentId}"></span> does not exist.</h2>
+
+<footer th:replace="fragments.html :: languages"></footer>
+
+</body>
+</html>

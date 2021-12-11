@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Students With No Notes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{nonotestudents.h1}">Students With No Notes</h1>
+
+<table class="centre-screen">
+    <tr>
+        <th th:text="#{allstudents.id}">ID</th>
+        <th th:text="#{allstudents.email}">Email</th>
+        <th th:text="#{allstudents.firstname}">First Name</th>
+        <th th:text="#{allstudents.surname}">Surname</th>
+    </tr>
+    <tr th:each="student: ${noNoteStudents}" th:object="${student}">
+        <td th:text="*{studentId}"></td>
+        <td><a th:text="*{studentEmail}" th:href="'/student/' + *{studentId}"></a></td>
+        <td th:text="*{studentFname}"></td>
+        <td th:text="*{studentSurname}"></td>
+    </tr>
+</table>
+
+<footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

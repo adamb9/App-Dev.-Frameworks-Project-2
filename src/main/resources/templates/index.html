@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<header th:insert="fragments.html :: heading"></header>
+
+<h1 th:text="#{index.h1}">Welcome!</h1>
+
+<h2 th:text="#{searchstudent.heading}">Search for a student</h2>
+<div>
+    <form method="get" th:action="@{/student/}" th:object="${searchStudentForm}">
+        <br><label for="studentId" th:text="#{searchstudent.studentid}"></label>
+            <input type="text" th:field="*{studentId}" id="studentId"/>
+                <span th:if="${#fields.hasErrors('studentId')}" class="error" th:errors="*{studentId}"></span>
+        <br><input type="submit" th:value="#{submit.search} "/>
+    </form>
+</div>
+
+<footer th:replace="fragments.html :: languages"></footer>
+</body>
+</html>

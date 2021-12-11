@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+    <nav th:fragment="heading">
+        <ul>
+            <li><a sec:authorize="hasAnyRole('ROLE_MENTOR','ROLE_REVIEWER')" th:text = "#{fragments.home}" th:href="@{/}">Home</a></li>
+            <li><a sec:authorize="hasAnyRole('ROLE_MENTOR','ROLE_REVIEWER')" th:text = "#{fragments.allstudents}" th:href="@{/allstudents}">All Students</a></li>
+            <li><a sec:authorize="hasRole('ROLE_MENTOR')" th:text = "#{fragments.nonotestudents}" th:href="@{/allstudents/nonote}">No Note Students</a></li>
+            <li><a sec:authorize="hasRole('ROLE_REVIEWER')" th:text = "#{fragments.morethan4notestudents}" th:href="@{/allstudents/over4notes}">Students Over 4 Notes</a></li>
+            <li><a sec:authorize="hasRole('ROLE_MENTOR')" th:text = "#{fragments.newstudent}" th:href="@{/newstudent}">Add Student</a></li>
+            <li><a sec:authorize="hasRole('ROLE_MENTOR')" th:text = "#{fragments.newnote}" th:href="@{/newnote}">Add Note</a></li>
+            <li><a sec:authorize="hasRole('ROLE_REVIEWER')" th:text = "#{fragments.stats}" th:href="@{/stats}">View Stats</a></li>
+            <li><a sec:authorize="!isAuthenticated()" th:text = "#{fragments.login}" th:href="@{/login}">Login</a></li>
+            <li><a sec:authorize="isAuthenticated()" th:text = "#{fragments.logout}" th:href="@{/logout}">Logout</a></li>
+
+        </ul>
+    </nav>
+
+    <footer th:fragment="languages" th:with="currentUrl=(${@thymeleafBeans.removeLangFromUrl()})">
+        <a th:href = "@{${currentUrl}(lang=ie)}">IE</a>
+        <a th:href = "@{${currentUrl}(lang=de)}">DE</a>
+        <br>
+        <span>&copy; Adam Baldwin</span>
+    </footer>
+
+
+</body>
+</html>
